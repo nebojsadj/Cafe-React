@@ -1,0 +1,59 @@
+body {
+    background-color: rgba(117, 116, 116, 0.966);
+}
+
+.tab {
+    width: 400px;
+    height: 400px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    margin: 30px auto;
+    background-color: rgb(95, 180, 95);
+    text-align: center;
+    user-select: none;
+}
+
+h3 {
+    color: white;
+}
+
+ul {
+    list-style: none;
+    margin-top: 5px;
+    margin-left: -33px;
+    font-size: 22px;
+    color: blue;
+}
+
+.add {
+    margin-top: 4px;
+}
+
+.sum {
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid none;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+    font-size: 22px;
+    margin-left: 138px;
+    margin-top: 2px;
+}
+
+.holder {
+    width: 180px;
+    height: 215px;
+    border: 1px solid none;
+    margin-left: 105px;
+}
+
+.cleaning {
+    width: 400px;
+    height: 160px;
+    border: 1px solid none;
+    margin: 100px auto;
+    text-align: center;
+    color: white;
+}
