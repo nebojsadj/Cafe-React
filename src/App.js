@@ -48,8 +48,7 @@ function App() {
   const serveTable = (table, tabId) => {
     let index = state.map((el) => el.id).indexOf(parseInt(tabId));
     let filtered = state.filter((el) => el.id === parseInt(tabId))[0];
-    console.log(filtered);
-    console.log(table);
+
     state[index] = {
       ...filtered,
       espresso: filtered.espresso + table.espresso,
@@ -63,7 +62,6 @@ function App() {
     let index = state.map((el) => el.id).indexOf(table.id);
     state[index] = { ...state[index], espresso: 0, cappuccino: 0, tea: 0 };
     setState(state);
-    console.log(state[index]);
   };
 
   return (

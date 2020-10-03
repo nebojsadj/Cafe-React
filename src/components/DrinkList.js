@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { withRouter, Link } from "react-router-dom";
 
 function DrinkList(props) {
-  console.log(props);
   const [table, setTable] = useState({
     id: parseInt(props.match.params.id),
     espresso: 0,
