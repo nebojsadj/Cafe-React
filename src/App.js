@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Header from "./components/Header";
 import Tables from "./components/Tables";
 import DrinkList from "./components/DrinkList";
@@ -58,10 +58,6 @@ function App() {
     };
     setState(state);
   };
-
-  useEffect(() => {
-    setState(state);
-  }, [state]);
 
   const clearTable = (table) => {
     let index = state.map((el) => el.id).indexOf(table.id);
