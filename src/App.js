@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Tables from "./components/Tables";
 import DrinkList from "./components/DrinkList";
-import { BrowserRouter, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Cleaning from "./components/Cleaning";
 
 function App() {
@@ -72,20 +72,18 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
-      <div>
-        <Header />
-        <Route path="/" exact>
-          <Tables state={state} clearTable={clearTable} />
-        </Route>
-        <Route path="/drinks">
-          <DrinkList serveTable={serveTable} />
-        </Route>
-        <Route path="/cleaning">
-          <Cleaning />
-        </Route>
-      </div>
-    </BrowserRouter>
+    <div>
+      <Header />
+      <Route path="/" exact>
+        <Tables state={state} clearTable={clearTable} />
+      </Route>
+      <Route path="/drinks">
+        <DrinkList serveTable={serveTable} />
+      </Route>
+      <Route path="/cleaning">
+        <Cleaning />
+      </Route>
+    </div>
   );
 }
 
