@@ -55,13 +55,13 @@ function App() {
       cappuccino: filtered.cappuccino + table.cappuccino,
       tea: filtered.tea + table.tea,
     };
-    setState(state);
+    setState([...state]);
   };
 
   const clearTable = (table) => {
     let index = state.map((el) => el.id).indexOf(table.id);
     state[index] = { ...state[index], espresso: 0, cappuccino: 0, tea: 0 };
-    setState(state);
+    setState([...state]);
   };
 
   return (
