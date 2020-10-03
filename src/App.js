@@ -46,9 +46,8 @@ function App() {
   ]);
 
   const serveTable = (table, tabId) => {
-    let numb = tabId.substring(8, 9);
-    let index = state.map((el) => el.id).indexOf(parseInt(numb));
-    let filtered = state.filter((el) => el.id === parseInt(numb))[0];
+    let index = state.map((el) => el.id).indexOf(parseInt(tabId));
+    let filtered = state.filter((el) => el.id === parseInt(tabId))[0];
     console.log(filtered);
     console.log(table);
     state[index] = {
@@ -77,7 +76,7 @@ function App() {
       <Route path="/" exact>
         <Tables state={state} clearTable={clearTable} />
       </Route>
-      <Route path="/drinks">
+      <Route path="/drinks/:id">
         <DrinkList serveTable={serveTable} />
       </Route>
       <Route path="/cleaning">

@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { withRouter, Link } from "react-router-dom";
 
 function DrinkList(props) {
+  console.log(props);
   const [table, setTable] = useState({
-    id: parseInt(props.location.pathname.substring(8, 9)),
+    id: parseInt(props.match.params.id),
     espresso: 0,
     espressoPrice: 120,
     cappuccino: 0,
@@ -13,7 +14,7 @@ function DrinkList(props) {
   });
 
   const serve = () => {
-    props.serveTable(table, props.location.pathname);
+    props.serveTable(table, props.match.params.id);
     props.history.push("/");
   };
 
