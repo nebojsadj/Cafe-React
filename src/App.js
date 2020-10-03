@@ -43,24 +43,6 @@ function App() {
       tea: 0,
       teaPrice: 90,
     },
-    {
-      id: 5,
-      espresso: 0,
-      espressoPrice: 120,
-      cappuccino: 0,
-      cappuccinoPrice: 140,
-      tea: 0,
-      teaPrice: 90,
-    },
-    {
-      id: 6,
-      espresso: 0,
-      espressoPrice: 120,
-      cappuccino: 0,
-      cappuccinoPrice: 140,
-      tea: 0,
-      teaPrice: 90,
-    },
   ]);
 
   const serveTable = (table, tabId) => {
