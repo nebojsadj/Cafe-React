@@ -3,7 +3,6 @@ import Header from "./components/Header";
 import Tables from "./components/Tables";
 import DrinkList from "./components/DrinkList";
 import { Route } from "react-router-dom";
-import Cleaning from "./components/Cleaning";
 
 function App() {
   const [state, setState] = useState([
@@ -65,7 +64,7 @@ function App() {
   };
 
   return (
-    <div>
+    <React.Fragment>
       <Header />
       <Route path="/" exact>
         <Tables state={state} clearTable={clearTable} />
@@ -73,10 +72,7 @@ function App() {
       <Route path="/drinks/:id">
         <DrinkList serveTable={serveTable} />
       </Route>
-      <Route path="/cleaning">
-        <Cleaning />
-      </Route>
-    </div>
+    </React.Fragment>
   );
 }
 
