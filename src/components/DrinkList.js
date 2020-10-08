@@ -12,6 +12,8 @@ function DrinkList(props) {
     teaPrice: 90,
   });
 
+  const { espresso, cappuccino, tea } = table;
+
   const serve = () => {
     props.serveTable(table, props.match.params.id);
     props.history.push("/");
@@ -33,7 +35,7 @@ function DrinkList(props) {
                 }
                 className="btn btn-primary form-control mt-2"
               >
-                {`Espresso ${table.espresso}`}
+                {`Espresso ${espresso}`}
               </button>
               <br />
               <button
@@ -45,7 +47,7 @@ function DrinkList(props) {
                 }
                 className="btn btn-primary form-control mt-2"
               >
-                {`Cappuccino ${table.cappuccino}`}
+                {`Cappuccino ${cappuccino}`}
               </button>
               <br />
               <button
@@ -57,7 +59,7 @@ function DrinkList(props) {
                 }
                 className="btn btn-primary form-control mt-2"
               >
-                {`Tea ${table.tea}`}
+                {`Tea ${tea}`}
               </button>
               <br />
               <button
