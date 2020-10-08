@@ -10,7 +10,7 @@ function Table({ table, index, clearTable }) {
   return (
     <div className="tab">
       <button
-        onClick={() => clearTable(table)}
+        onClick={() => clearTable(index)}
         className="btn btn-danger btn-sm mt-2"
       >
         Clear table

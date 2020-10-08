@@ -57,8 +57,7 @@ function App() {
     setState([...state]);
   };
 
-  const clearTable = (table) => {
-    let index = state.map((el) => el.id).indexOf(table.id);
+  const clearTable = (index) => {
     state[index] = { ...state[index], espresso: 0, cappuccino: 0, tea: 0 };
     setState([...state]);
   };
