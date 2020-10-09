@@ -45,14 +45,15 @@ function App() {
   ]);
 
   const serveTable = (table) => {
-    let index = state.map((el) => el.id).indexOf(table.id);
-    let filtered = state.filter((el) => el.id === table.id)[0];
+    const index = state.map((el) => el.id).indexOf(table.id);
+    const filtered = state.filter((el) => el.id === table.id)[0];
+    const { espresso, cappuccino, tea } = filtered;
 
     state[index] = {
       ...filtered,
-      espresso: filtered.espresso + table.espresso,
-      cappuccino: filtered.cappuccino + table.cappuccino,
-      tea: filtered.tea + table.tea,
+      espresso: espresso + table.espresso,
+      cappuccino: cappuccino + table.cappuccino,
+      tea: tea + table.tea,
     };
     setState([...state]);
   };
