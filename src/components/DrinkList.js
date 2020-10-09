@@ -30,7 +30,7 @@ function DrinkList(props) {
                 onClick={() =>
                   setTable({
                     ...table,
-                    espresso: table.espresso + 1,
+                    espresso: espresso + 1,
                   })
                 }
                 className="btn btn-primary form-control mt-2"
@@ -42,7 +42,7 @@ function DrinkList(props) {
                 onClick={() =>
                   setTable({
                     ...table,
-                    cappuccino: table.cappuccino + 1,
+                    cappuccino: cappuccino + 1,
                   })
                 }
                 className="btn btn-primary form-control mt-2"
@@ -54,7 +54,7 @@ function DrinkList(props) {
                 onClick={() =>
                   setTable({
                     ...table,
-                    tea: table.tea + 1,
+                    tea: tea + 1,
                   })
                 }
                 className="btn btn-primary form-control mt-2"

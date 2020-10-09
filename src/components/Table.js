@@ -12,9 +12,6 @@ function Table({ table, index, clearTable }) {
     id,
   } = table;
 
-  const sum =
-    espresso * espressoPrice + cappuccino * cappuccinoPrice + tea * teaPrice;
-
   return (
     <div className="tab">
       <button
@@ -31,7 +28,11 @@ function Table({ table, index, clearTable }) {
           <li>{tea > 0 && `Tea * ${tea}`}</li>
         </ul>
       </div>
-      <div className="sum">{sum}</div>
+      <div className="sum">
+        {espresso * espressoPrice +
+          cappuccino * cappuccinoPrice +
+          tea * teaPrice}
+      </div>
       <Link to={"/drinks/" + id} className="btn btn-warning add">
         Order a drink
       </Link>
