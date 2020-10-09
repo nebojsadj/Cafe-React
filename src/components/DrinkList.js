@@ -15,7 +15,7 @@ function DrinkList(props) {
   const { espresso, cappuccino, tea } = table;
 
   const serve = () => {
-    props.serveTable(table, props.match.params.id);
+    props.serveTable(table);
     props.history.push("/");
   };
 

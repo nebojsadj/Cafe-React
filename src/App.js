@@ -44,9 +44,9 @@ function App() {
     },
   ]);
 
-  const serveTable = (table, tabId) => {
-    let index = state.map((el) => el.id).indexOf(parseInt(tabId));
-    let filtered = state.filter((el) => el.id === parseInt(tabId))[0];
+  const serveTable = (table) => {
+    let index = state.map((el) => el.id).indexOf(table.id);
+    let filtered = state.filter((el) => el.id === table.id)[0];
 
     state[index] = {
       ...filtered,
