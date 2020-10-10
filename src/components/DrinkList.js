@@ -13,7 +13,6 @@ function DrinkList(props) {
   });
 
   const { espresso, cappuccino, tea } = table;
-
   const serve = () => {
     props.serveTable(table);
     props.history.push("/");
@@ -25,60 +24,95 @@ function DrinkList(props) {
         <div className="col-8 offset-2">
           <h2 className="text-center">Drink list</h2>
           <div className="row mt-4">
-            <div className="col-6 offset-3">
-              <button
-                onClick={() =>
-                  setTable({
-                    ...table,
-                    espresso: espresso + 1,
-                  })
-                }
-                className="btn btn-primary form-control mt-2"
-              >
-                {`Espresso ${espresso}`}
-              </button>
-              <br />
-              <button
-                onClick={() =>
-                  setTable({
-                    ...table,
-                    cappuccino: cappuccino + 1,
-                  })
-                }
-                className="btn btn-primary form-control mt-2"
-              >
-                {`Cappuccino ${cappuccino}`}
-              </button>
-              <br />
-              <button
-                onClick={() =>
-                  setTable({
-                    ...table,
-                    tea: tea + 1,
-                  })
-                }
-                className="btn btn-primary form-control mt-2"
-              >
-                {`Tea ${tea}`}
-              </button>
-              <br />
+            <div className="col-8 offset-2">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Drinks</th>
+                    <th>less</th>
+                    <th>more</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{`Espresso ${espresso}`}</td>
+                    <td>
+                      <button
+                        disabled={espresso === 0}
+                        onClick={() =>
+                          setTable({ ...table, espresso: espresso - 1 })
+                        }
+                        className="btn btn-info btn-sm"
+                      >
+                        -
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() =>
+                          setTable({ ...table, espresso: espresso + 1 })
+                        }
+                        className="btn btn-info btn-sm"
+                      >
+                        +
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{`Cappuccino ${cappuccino}`}</td>
+                    <td>
+                      <button
+                        disabled={cappuccino === 0}
+                        onClick={() =>
+                          setTable({ ...table, cappuccino: cappuccino - 1 })
+                        }
+                        className="btn btn-info btn-sm"
+                      >
+                        -
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() =>
+                          setTable({ ...table, cappuccino: cappuccino + 1 })
+                        }
+                        className="btn btn-info btn-sm"
+                      >
+                        +
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{`Tea ${tea}`}</td>
+                    <td>
+                      <button
+                        disabled={tea === 0}
+                        onClick={() => setTable({ ...table, tea: tea - 1 })}
+                        className="btn btn-info btn-sm"
+                      >
+                        -
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => setTable({ ...table, tea: tea + 1 })}
+                        className="btn btn-info btn-sm"
+                      >
+                        +
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
               <button
                 onClick={serve}
-                className="btn btn-success form-control mt-4"
+                className="btn btn-primary float-right mt-5 mr-5"
               >
-                Submit
+                Confirm
               </button>
               <br />
-              <button
-                onClick={() =>
-                  setTable({ ...table, espresso: 0, cappuccino: 0, tea: 0 })
-                }
-                className="btn btn-warning form-control mt-4"
-              >
-                Clear
-              </button>
-              <br />
-              <Link to="/" className="btn btn-info form-control mt-3">
+              <Link to="/" className="btn btn-warning float-left mt-4 ml-5">
                 Back
               </Link>
             </div>
