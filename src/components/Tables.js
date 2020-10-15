@@ -1,7 +1,7 @@
 import React from "react";
 import Table from "./Table";
 
-function Tables({ state, clearTable }) {
+function Tables({ state, prices, clearTable }) {
   return (
     <div className="container">
       <div className="row">
@@ -9,7 +9,12 @@ function Tables({ state, clearTable }) {
           <div className="row">
             {state.map((table, index) => (
               <div className="col-6" key={index}>
-                <Table table={table} index={index} clearTable={clearTable} />
+                <Table
+                  table={table}
+                  prices={prices}
+                  index={index}
+                  clearTable={clearTable}
+                />
               </div>
             ))}
           </div>

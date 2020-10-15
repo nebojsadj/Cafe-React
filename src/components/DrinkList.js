@@ -5,12 +5,15 @@ function DrinkList(props) {
   const [table, setTable] = useState({
     id: parseInt(props.match.params.id),
     espresso: 0,
-    espressoPrice: 120,
     cappuccino: 0,
-    cappuccinoPrice: 140,
     tea: 0,
-    teaPrice: 90,
   });
+
+  // const [prices, setPrices] = useState({
+  //   espressoPrice: 120,
+  //   cappuccinoPrice: 140,
+  //   teaPrice: 90,
+  // });
 
   const { espresso, cappuccino, tea } = table;
   const serve = () => {

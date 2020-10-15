@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import Header from "./components/Header";
 import Tables from "./components/Tables";
 import DrinkList from "./components/DrinkList";
@@ -9,40 +9,34 @@ function App() {
     {
       id: 1,
       espresso: 0,
-      espressoPrice: 120,
       cappuccino: 0,
-      cappuccinoPrice: 140,
       tea: 0,
-      teaPrice: 90,
     },
     {
       id: 2,
       espresso: 0,
-      espressoPrice: 120,
       cappuccino: 0,
-      cappuccinoPrice: 140,
       tea: 0,
-      teaPrice: 90,
     },
     {
       id: 3,
       espresso: 0,
-      espressoPrice: 120,
       cappuccino: 0,
-      cappuccinoPrice: 140,
       tea: 0,
-      teaPrice: 90,
     },
     {
       id: 4,
       espresso: 0,
-      espressoPrice: 120,
       cappuccino: 0,
-      cappuccinoPrice: 140,
       tea: 0,
-      teaPrice: 90,
     },
   ]);
+
+  const prices = {
+    espressoPrice: 120,
+    cappuccinoPrice: 140,
+    teaPrice: 90,
+  };
 
   const serveTable = (table) => {
     const index = state.map((el) => el.id).indexOf(table.id);
@@ -64,15 +58,15 @@ function App() {
   };
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Header />
       <Route path="/" exact>
-        <Tables state={state} clearTable={clearTable} />
+        <Tables state={state} prices={prices} clearTable={clearTable} />
       </Route>
       <Route path="/drinks/:id">
         <DrinkList serveTable={serveTable} />
       </Route>
-    </React.Fragment>
+    </Fragment>
   );
 }
 

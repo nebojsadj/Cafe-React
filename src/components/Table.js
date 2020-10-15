@@ -1,16 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Table({ table, index, clearTable }) {
-  const {
-    espresso,
-    cappuccino,
-    tea,
-    espressoPrice,
-    cappuccinoPrice,
-    teaPrice,
-    id,
-  } = table;
+function Table({ table, prices, index, clearTable }) {
+  const { espresso, cappuccino, tea, id } = table;
+
+  const { espressoPrice, cappuccinoPrice, teaPrice } = prices;
 
   return (
     <div className="tab">
