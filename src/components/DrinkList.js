@@ -9,12 +9,6 @@ function DrinkList(props) {
     tea: 0,
   });
 
-  // const [prices, setPrices] = useState({
-  //   espressoPrice: 120,
-  //   cappuccinoPrice: 140,
-  //   teaPrice: 90,
-  // });
-
   const { espresso, cappuccino, tea } = table;
   const serve = () => {
     props.serveTable(table);

@@ -1,8 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Table({ table, prices, index, clearTable }) {
+function Table({ table, index, clearTable }) {
   const { espresso, cappuccino, tea, id } = table;
+
+  const prices = {
+    espressoPrice: 120,
+    cappuccinoPrice: 140,
+    teaPrice: 90,
+  };
 
   const { espressoPrice, cappuccinoPrice, teaPrice } = prices;
 

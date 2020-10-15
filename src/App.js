@@ -32,12 +32,6 @@ function App() {
     },
   ]);
 
-  const prices = {
-    espressoPrice: 120,
-    cappuccinoPrice: 140,
-    teaPrice: 90,
-  };
-
   const serveTable = (table) => {
     const index = state.map((el) => el.id).indexOf(table.id);
     const filtered = state.filter((el) => el.id === table.id)[0];
@@ -61,7 +55,7 @@ function App() {
     <Fragment>
       <Header />
       <Route path="/" exact>
-        <Tables state={state} prices={prices} clearTable={clearTable} />
+        <Tables state={state} clearTable={clearTable} />
       </Route>
       <Route path="/drinks/:id">
         <DrinkList serveTable={serveTable} />
