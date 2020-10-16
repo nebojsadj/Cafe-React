@@ -11,7 +11,7 @@ function App() {
   const howManyTables = (numb) => {
     const numberOfTables = [];
     for (let i = 0; i < numb; i++) {
-      numbTables.push(i);
+      numberOfTables.push(i);
     }
     setTables(numberOfTables);
   };

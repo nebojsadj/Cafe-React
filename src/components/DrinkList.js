@@ -8,12 +8,40 @@ function DrinkList(props) {
     tea: 0,
   });
 
-  const { espresso, cappuccino, tea } = drinks;
-
   const serve = () => {
     const tableId = parseInt(props.match.params.id);
     props.serveTable(tableId, drinks);
     props.history.push("/");
+  };
+
+  const tableDrinks = () => {
+    const arr = [];
+    let i = 0;
+    for (const prop in drinks) {
+      arr.push(
+        <tr key={i++}>
+          <td>{`${prop} ${drinks[prop]}`}</td>
+          <td>
+            <button
+              disabled={drinks[prop] === 0}
+              onClick={() => setDrinks({ ...drinks, [prop]: drinks[prop] - 1 })}
+              className="btn btn-info btn-sm"
+            >
+              -
+            </button>
+          </td>
+          <td>
+            <button
+              onClick={() => setDrinks({ ...drinks, [prop]: drinks[prop] + 1 })}
+              className="btn btn-info btn-sm"
+            >
+              +
+            </button>
+          </td>
+        </tr>
+      );
+    }
+    return arr;
   };
 
   return (
@@ -31,78 +59,8 @@ function DrinkList(props) {
                     <th>more</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>{`Espresso ${espresso}`}</td>
-                    <td>
-                      <button
-                        disabled={espresso === 0}
-                        onClick={() =>
-                          setDrinks({ ...drinks, espresso: espresso - 1 })
-                        }
-                        className="btn btn-info btn-sm"
-                      >
-                        -
-                      </button>
-                    </td>
-                    <td>
-                      <button
-                        onClick={() =>
-                          setDrinks({ ...drinks, espresso: espresso + 1 })
-                        }
-                        className="btn btn-info btn-sm"
-                      >
-                        +
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>{`Cappuccino ${cappuccino}`}</td>
-                    <td>
-                      <button
-                        disabled={cappuccino === 0}
-                        onClick={() =>
-                          setDrinks({ ...drinks, cappuccino: cappuccino - 1 })
-                        }
-                        className="btn btn-info btn-sm"
-                      >
-                        -
-                      </button>
-                    </td>
-                    <td>
-                      <button
-                        onClick={() =>
-                          setDrinks({ ...drinks, cappuccino: cappuccino + 1 })
-                        }
-                        className="btn btn-info btn-sm"
-                      >
-                        +
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>{`Tea ${tea}`}</td>
-                    <td>
-                      <button
-                        disabled={tea === 0}
-                        onClick={() => setDrinks({ ...drinks, tea: tea - 1 })}
-                        className="btn btn-info btn-sm"
-                      >
-                        -
-                      </button>
-                    </td>
-                    <td>
-                      <button
-                        onClick={() => setDrinks({ ...drinks, tea: tea + 1 })}
-                        className="btn btn-info btn-sm"
-                      >
-                        +
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
+                <tbody>{tableDrinks()}</tbody>
               </table>
-
               <button
                 onClick={serve}
                 className="btn btn-primary float-right mt-5 mr-5"

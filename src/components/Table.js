@@ -12,6 +12,15 @@ function Table({ table, index, clearTable }) {
 
   const { espresso_$, cappuccino_$, tea_$ } = prices;
 
+  const servedDrinks = () => {
+    const arr = [];
+    for (const prop in table) {
+      table[prop] > 0 && arr.push(`${prop} * ${table[prop]}`);
+    }
+    const array = arr.map((el, i) => <li key={i}>{el}</li>);
+    return array;
+  };
+
   return (
     <div className="tab">
       <button
@@ -22,11 +31,7 @@ function Table({ table, index, clearTable }) {
       </button>
       <h3 className="mt-2">{`Table ${index + 1}`}</h3>
       <div className="holder">
-        <ul>
-          <li>{espresso > 0 && `Espresso * ${espresso}`}</li>
-          <li>{cappuccino > 0 && `Cappuccino * ${cappuccino}`}</li>
-          <li>{tea > 0 && `Tea * ${tea}`}</li>
-        </ul>
+        <ul>{servedDrinks()}</ul>
       </div>
       <div className="sum">
         {espresso * espresso_$ + cappuccino * cappuccino_$ + tea * tea_$ || 0}
