@@ -2,15 +2,31 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Table({ table, index, clearTable }) {
-  const { espresso, cappuccino, tea } = table;
+  const {
+    espresso,
+    cappuccino,
+    tea,
+    beer,
+    redWine,
+    whiteWine,
+    tequila,
+    whiskey,
+    cola,
+    wather,
+  } = table;
 
   const prices = {
     espresso_$: 120,
     cappuccino_$: 140,
     tea_$: 90,
+    beer_$: 140,
+    redWine_$: 200,
+    whiteWine_$: 180,
+    tequila_$: 120,
+    whiskey_$: 120,
+    cola_$: 120,
+    wather_$: 80,
   };
-
-  const { espresso_$, cappuccino_$, tea_$ } = prices;
 
   const servedDrinks = () => {
     const arr = [];
@@ -34,7 +50,16 @@ function Table({ table, index, clearTable }) {
         <ul>{servedDrinks()}</ul>
       </div>
       <div className="sum">
-        {espresso * espresso_$ + cappuccino * cappuccino_$ + tea * tea_$ || 0}
+        {espresso * prices.espresso_$ +
+          cappuccino * prices.cappuccino_$ +
+          tea * prices.tea_$ +
+          beer * prices.beer_$ +
+          redWine * prices.redWine_$ +
+          whiteWine * prices.whiteWine_$ +
+          tequila * prices.tequila_$ +
+          whiskey * prices.whiskey_$ +
+          cola * prices.cola_$ +
+          wather * prices.wather_$ || 0}
       </div>
       <Link to={"/drinks/" + index} className="btn btn-warning add">
         Order a drink

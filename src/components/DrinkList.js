@@ -6,6 +6,13 @@ function DrinkList(props) {
     espresso: 0,
     cappuccino: 0,
     tea: 0,
+    beer: 0,
+    redWine: 0,
+    whiteWine: 0,
+    tequila: 0,
+    whiskey: 0,
+    cola: 0,
+    wather: 0,
   });
 
   const serve = () => {

@@ -17,19 +17,37 @@ function App() {
   };
 
   useEffect(() => {
-    howManyTables(10);
+    howManyTables(6);
   }, []);
 
   const serveTable = (id, drinks) => {
     if (Number.isInteger(tables[id])) {
       tables.splice(id, 1, drinks);
     } else {
-      const { espresso, cappuccino, tea } = drinks;
+      const {
+        espresso,
+        cappuccino,
+        tea,
+        beer,
+        redWine,
+        whiteWine,
+        tequila,
+        whiskey,
+        cola,
+        wather,
+      } = drinks;
 
       tables[id] = {
         espresso: tables[id].espresso + espresso,
         cappuccino: tables[id].cappuccino + cappuccino,
         tea: tables[id].tea + tea,
+        beer: tables[id].beer + beer,
+        redWine: tables[id].redWine + redWine,
+        whiteWine: tables[id].whiteWine + whiteWine,
+        tequila: tables[id].tequila + tequila,
+        whiskey: tables[id].whiskey + whiskey,
+        cola: tables[id].cola + cola,
+        wather: tables[id].wather + wather,
       };
     }
 
