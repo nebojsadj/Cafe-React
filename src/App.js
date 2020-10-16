@@ -3,59 +3,49 @@ import Header from "./components/Header";
 import Tables from "./components/Tables";
 import DrinkList from "./components/DrinkList";
 import { Route } from "react-router-dom";
+import { useEffect } from "react";
 
 function App() {
-  const [state, setState] = useState([
-    {
-      id: 1,
-      espresso: 0,
-      cappuccino: 0,
-      tea: 0,
-    },
-    {
-      id: 2,
-      espresso: 0,
-      cappuccino: 0,
-      tea: 0,
-    },
-    {
-      id: 3,
-      espresso: 0,
-      cappuccino: 0,
-      tea: 0,
-    },
-    {
-      id: 4,
-      espresso: 0,
-      cappuccino: 0,
-      tea: 0,
-    },
-  ]);
+  const [tables, setTables] = useState([]);
 
-  const serveTable = (table) => {
-    const index = state.map((el) => el.id).indexOf(table.id);
-    const filtered = state.filter((el) => el.id === table.id)[0];
-    const { espresso, cappuccino, tea } = filtered;
+  const howManyTables = (numb) => {
+    const numberOfTables = [];
+    for (let i = 0; i < numb; i++) {
+      numbTables.push(i);
+    }
+    setTables(numberOfTables);
+  };
 
-    state[index] = {
-      ...filtered,
-      espresso: espresso + table.espresso,
-      cappuccino: cappuccino + table.cappuccino,
-      tea: tea + table.tea,
-    };
-    setState([...state]);
+  useEffect(() => {
+    howManyTables(10);
+  }, []);
+
+  const serveTable = (id, drinks) => {
+    if (Number.isInteger(tables[id])) {
+      tables.splice(id, 1, drinks);
+    } else {
+      const { espresso, cappuccino, tea } = drinks;
+
+      tables[id] = {
+        espresso: tables[id].espresso + espresso,
+        cappuccino: tables[id].cappuccino + cappuccino,
+        tea: tables[id].tea + tea,
+      };
+    }
+
+    setTables(tables);
   };
 
   const clearTable = (index) => {
-    state[index] = { ...state[index], espresso: 0, cappuccino: 0, tea: 0 };
-    setState([...state]);
+    tables.splice(index, 1, index);
+    setTables([...tables]);
   };
 
   return (
     <Fragment>
       <Header />
       <Route path="/" exact>
-        <Tables state={state} clearTable={clearTable} />
+        <Tables tables={tables} clearTable={clearTable} />
       </Route>
       <Route path="/drinks/:id">
         <DrinkList serveTable={serveTable} />

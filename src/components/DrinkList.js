@@ -2,16 +2,17 @@ import React, { useState } from "react";
 import { withRouter, Link } from "react-router-dom";
 
 function DrinkList(props) {
-  const [table, setTable] = useState({
-    id: parseInt(props.match.params.id),
+  const [drinks, setDrinks] = useState({
     espresso: 0,
     cappuccino: 0,
     tea: 0,
   });
 
-  const { espresso, cappuccino, tea } = table;
+  const { espresso, cappuccino, tea } = drinks;
+
   const serve = () => {
-    props.serveTable(table);
+    const tableId = parseInt(props.match.params.id);
+    props.serveTable(tableId, drinks);
     props.history.push("/");
   };
 
@@ -37,7 +38,7 @@ function DrinkList(props) {
                       <button
                         disabled={espresso === 0}
                         onClick={() =>
-                          setTable({ ...table, espresso: espresso - 1 })
+                          setDrinks({ ...drinks, espresso: espresso - 1 })
                         }
                         className="btn btn-info btn-sm"
                       >
@@ -47,7 +48,7 @@ function DrinkList(props) {
                     <td>
                       <button
                         onClick={() =>
-                          setTable({ ...table, espresso: espresso + 1 })
+                          setDrinks({ ...drinks, espresso: espresso + 1 })
                         }
                         className="btn btn-info btn-sm"
                       >
@@ -61,7 +62,7 @@ function DrinkList(props) {
                       <button
                         disabled={cappuccino === 0}
                         onClick={() =>
-                          setTable({ ...table, cappuccino: cappuccino - 1 })
+                          setDrinks({ ...drinks, cappuccino: cappuccino - 1 })
                         }
                         className="btn btn-info btn-sm"
                       >
@@ -71,7 +72,7 @@ function DrinkList(props) {
                     <td>
                       <button
                         onClick={() =>
-                          setTable({ ...table, cappuccino: cappuccino + 1 })
+                          setDrinks({ ...drinks, cappuccino: cappuccino + 1 })
                         }
                         className="btn btn-info btn-sm"
                       >
@@ -84,7 +85,7 @@ function DrinkList(props) {
                     <td>
                       <button
                         disabled={tea === 0}
-                        onClick={() => setTable({ ...table, tea: tea - 1 })}
+                        onClick={() => setDrinks({ ...drinks, tea: tea - 1 })}
                         className="btn btn-info btn-sm"
                       >
                         -
@@ -92,7 +93,7 @@ function DrinkList(props) {
                     </td>
                     <td>
                       <button
-                        onClick={() => setTable({ ...table, tea: tea + 1 })}
+                        onClick={() => setDrinks({ ...drinks, tea: tea + 1 })}
                         className="btn btn-info btn-sm"
                       >
                         +

@@ -2,15 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Table({ table, index, clearTable }) {
-  const { espresso, cappuccino, tea, id } = table;
+  const { espresso, cappuccino, tea } = table;
 
   const prices = {
-    espressoPrice: 120,
-    cappuccinoPrice: 140,
-    teaPrice: 90,
+    espresso_$: 120,
+    cappuccino_$: 140,
+    tea_$: 90,
   };
 
-  const { espressoPrice, cappuccinoPrice, teaPrice } = prices;
+  const { espresso_$, cappuccino_$, tea_$ } = prices;
 
   return (
     <div className="tab">
@@ -29,11 +29,9 @@ function Table({ table, index, clearTable }) {
         </ul>
       </div>
       <div className="sum">
-        {espresso * espressoPrice +
-          cappuccino * cappuccinoPrice +
-          tea * teaPrice}
+        {espresso * espresso_$ + cappuccino * cappuccino_$ + tea * tea_$ || 0}
       </div>
-      <Link to={"/drinks/" + id} className="btn btn-warning add">
+      <Link to={"/drinks/" + index} className="btn btn-warning add">
         Order a drink
       </Link>
     </div>
