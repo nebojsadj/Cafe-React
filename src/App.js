@@ -5,13 +5,26 @@ import DrinkList from "./components/DrinkList";
 import { Route } from "react-router-dom";
 import { useEffect } from "react";
 
+const initState = {
+  espresso: 0,
+  cappuccino: 0,
+  tea: 0,
+  beer: 0,
+  redWine: 0,
+  whiteWine: 0,
+  tequila: 0,
+  whiskey: 0,
+  cola: 0,
+  wather: 0,
+};
+
 function App() {
   const [tables, setTables] = useState([]);
 
   const howManyTables = (numb) => {
     const numberOfTables = [];
     for (let i = 0; i < numb; i++) {
-      numberOfTables.push(i);
+      numberOfTables.push(initState);
     }
     setTables(numberOfTables);
   };
@@ -21,41 +34,12 @@ function App() {
   }, []);
 
   const serveTable = (id, drinks) => {
-    if (Number.isInteger(tables[id])) {
-      tables.splice(id, 1, drinks);
-    } else {
-      const {
-        espresso,
-        cappuccino,
-        tea,
-        beer,
-        redWine,
-        whiteWine,
-        tequila,
-        whiskey,
-        cola,
-        wather,
-      } = drinks;
-
-      tables[id] = {
-        espresso: tables[id].espresso + espresso,
-        cappuccino: tables[id].cappuccino + cappuccino,
-        tea: tables[id].tea + tea,
-        beer: tables[id].beer + beer,
-        redWine: tables[id].redWine + redWine,
-        whiteWine: tables[id].whiteWine + whiteWine,
-        tequila: tables[id].tequila + tequila,
-        whiskey: tables[id].whiskey + whiskey,
-        cola: tables[id].cola + cola,
-        wather: tables[id].wather + wather,
-      };
-    }
-
+    tables.splice(id, 1, drinks);
     setTables(tables);
   };
 
   const clearTable = (index) => {
-    tables.splice(index, 1, index);
+    tables.splice(index, 1, initState);
     setTables([...tables]);
   };
 
@@ -66,7 +50,7 @@ function App() {
         <Tables tables={tables} clearTable={clearTable} />
       </Route>
       <Route path="/drinks/:id">
-        <DrinkList serveTable={serveTable} />
+        <DrinkList tables={tables} serveTable={serveTable} />
       </Route>
     </Fragment>
   );

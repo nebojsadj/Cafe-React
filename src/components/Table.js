@@ -1,44 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Table({ table, index, clearTable }) {
-  const drinkPrices = {
-    espresso_$: 120,
-    cappuccino_$: 140,
-    tea_$: 90,
-    beer_$: 140,
-    redWine_$: 200,
-    whiteWine_$: 180,
-    tequila_$: 120,
-    whiskey_$: 120,
-    cola_$: 120,
-    wather_$: 80,
-  };
+const prices = {
+  espresso_price: 120,
+  cappuccino_price: 140,
+  tea_price: 90,
+  beer_price: 140,
+  redWine_price: 200,
+  whiteWine_price: 180,
+  tequila_price: 120,
+  whiskey_price: 120,
+  cola_price: 120,
+  wather_price: 80,
+};
 
+function Table({ table, index, clearTable }) {
   const servedDrinks = () => {
     const arr = [];
     for (const prop in table) {
       table[prop] > 0 && arr.push(`${prop} * ${table[prop]}`);
     }
-    const array = arr.map((el, i) => <li key={i}>{el}</li>);
-    return array;
+    return arr;
   };
 
-  const suma = () => {
+  const sum = () => {
     const allList = [];
-    let all;
-    if (typeof table === "object") {
-      const names = Object.values(table);
-      const prices = Object.values(drinkPrices);
+    const name = Object.values(table);
+    const price = Object.values(prices);
 
-      for (let i = 0; i < names.length; i++) {
-        allList.push(names[i] * prices[i]);
-      }
+    for (let i = 0; i < name.length; i++) {
+      allList.push(name[i] * price[i]);
     }
-    if (allList.length > 0) {
-      all = allList.reduce((a, b) => a + b);
-    }
-    return all;
+    return allList.reduce((a, b) => a + b);
   };
 
   return (
@@ -51,9 +44,13 @@ function Table({ table, index, clearTable }) {
       </button>
       <h3 className="mt-2">{`Table ${index + 1}`}</h3>
       <div className="holder">
-        <ul>{servedDrinks()}</ul>
+        <ul>
+          {servedDrinks().map((el, i) => (
+            <li key={i}>{el}</li>
+          ))}
+        </ul>
       </div>
-      <div className="sum">{suma()}</div>
+      <div className="sum">{sum()}</div>
       <Link to={"/drinks/" + index} className="btn btn-warning add">
         Order a drink
       </Link>

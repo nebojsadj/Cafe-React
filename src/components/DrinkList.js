@@ -1,19 +1,12 @@
 import React, { useState } from "react";
 import { withRouter, Link } from "react-router-dom";
+import { useEffect } from "react";
 
 function DrinkList(props) {
-  const [drinks, setDrinks] = useState({
-    espresso: 0,
-    cappuccino: 0,
-    tea: 0,
-    beer: 0,
-    redWine: 0,
-    whiteWine: 0,
-    tequila: 0,
-    whiskey: 0,
-    cola: 0,
-    wather: 0,
-  });
+  const [drinks, setDrinks] = useState(null);
+  useEffect(() => {
+    setDrinks(props.tables[parseInt(props.match.params.id)]);
+  }, [props.match.params.id]);
 
   const serve = () => {
     const tableId = parseInt(props.match.params.id);
@@ -23,30 +16,8 @@ function DrinkList(props) {
 
   const tableDrinks = () => {
     const arr = [];
-    let i = 0;
-    for (const prop in drinks) {
-      arr.push(
-        <tr key={i++}>
-          <td>{`${prop} ${drinks[prop]}`}</td>
-          <td>
-            <button
-              disabled={drinks[prop] === 0}
-              onClick={() => setDrinks({ ...drinks, [prop]: drinks[prop] - 1 })}
-              className="btn btn-info btn-sm"
-            >
-              -
-            </button>
-          </td>
-          <td>
-            <button
-              onClick={() => setDrinks({ ...drinks, [prop]: drinks[prop] + 1 })}
-              className="btn btn-info btn-sm"
-            >
-              +
-            </button>
-          </td>
-        </tr>
-      );
+    for (const key in drinks) {
+      arr.push({ key, value: parseInt(drinks[key]) });
     }
     return arr;
   };
@@ -66,7 +37,34 @@ function DrinkList(props) {
                     <th>more</th>
                   </tr>
                 </thead>
-                <tbody>{tableDrinks()}</tbody>
+                <tbody>
+                  {tableDrinks().map((el, i) => (
+                    <tr key={i}>
+                      <td>{`${el.key} ${el.value}`}</td>
+                      <td>
+                        <button
+                          disabled={el.value === 0}
+                          onClick={() =>
+                            setDrinks({ ...drinks, [el.key]: [el.value - 1] })
+                          }
+                          className="btn btn-info btn-sm"
+                        >
+                          -
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          onClick={() =>
+                            setDrinks({ ...drinks, [el.key]: [el.value + 1] })
+                          }
+                          className="btn btn-info btn-sm"
+                        >
+                          +
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
               </table>
               <button
                 onClick={serve}
