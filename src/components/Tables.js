@@ -2,16 +2,6 @@ import React from "react";
 import Table from "./Table";
 
 function Tables({ tables, clearTable }) {
-  // const sum = () => {
-  //   for (const key in tables) {
-  //     if (tables.hasOwnProperty(key) > 0) {
-  //       const element = tables[key];
-  //       console.log(element);
-  //     }
-  //   }
-  // };
-
-  // sum();
   return (
     <div className="container-fluid">
       <div className="row">
