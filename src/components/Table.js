@@ -1,18 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-const prices = {
-  espresso_price: 120,
-  cappuccino_price: 140,
-  tea_price: 90,
-  beer_price: 140,
-  redWine_price: 200,
-  whiteWine_price: 180,
-  tequila_price: 120,
-  whiskey_price: 120,
-  cola_price: 120,
-  wather_price: 80,
-};
+import { drinkPrices } from "./initState";
 
 function Table({ table, index, clearTable }) {
   const servedDrinks = () => {
@@ -25,11 +13,10 @@ function Table({ table, index, clearTable }) {
 
   const sum = () => {
     const allList = [];
-    const name = Object.values(table);
-    const price = Object.values(prices);
-
-    for (let i = 0; i < name.length; i++) {
-      allList.push(name[i] * price[i]);
+    const names = Object.values(table);
+    const prices = Object.values(drinkPrices);
+    for (let i = 0; i < names.length; i++) {
+      allList.push(names[i] * prices[i]);
     }
     return allList.reduce((a, b) => a + b);
   };

@@ -2,21 +2,9 @@ import React, { useState, Fragment } from "react";
 import Header from "./components/Header";
 import Tables from "./components/Tables";
 import DrinkList from "./components/DrinkList";
+import { initState } from "./components/initState";
 import { Route } from "react-router-dom";
 import { useEffect } from "react";
-
-const initState = {
-  espresso: 0,
-  cappuccino: 0,
-  tea: 0,
-  beer: 0,
-  redWine: 0,
-  whiteWine: 0,
-  tequila: 0,
-  whiskey: 0,
-  cola: 0,
-  wather: 0,
-};
 
 function App() {
   const [tables, setTables] = useState([]);
