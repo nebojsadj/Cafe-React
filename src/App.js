@@ -1,44 +1,29 @@
-import React, { useState, Fragment } from "react";
+import React, { Fragment } from "react";
+import { numberOfTables, initState } from "./components/redux/initState";
 import Header from "./components/Header";
 import Tables from "./components/Tables";
 import DrinkList from "./components/DrinkList";
-import { initState } from "./components/initState";
 import { Route } from "react-router-dom";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { load_tables } from "./components/redux/actions";
 
 function App() {
-  const [tables, setTables] = useState([]);
-
-  const howManyTables = (numb) => {
-    const numberOfTables = [];
-    for (let i = 0; i < numb; i++) {
-      numberOfTables.push(initState);
-    }
-    setTables(numberOfTables);
-  };
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    howManyTables(6);
-  }, []);
-
-  const serveTable = (id, drinks) => {
-    tables.splice(id, 1, drinks);
-    setTables(tables);
-  };
-
-  const clearTable = (index) => {
-    tables.splice(index, 1, initState);
-    setTables([...tables]);
-  };
+    numberOfTables(3);
+    dispatch(load_tables(initState.tables));
+  }, [dispatch]);
 
   return (
     <Fragment>
       <Header />
       <Route path="/" exact>
-        <Tables tables={tables} clearTable={clearTable} />
+        <Tables />
       </Route>
       <Route path="/drinks/:id">
-        <DrinkList tables={tables} serveTable={serveTable} />
+        <DrinkList />
       </Route>
     </Fragment>
   );

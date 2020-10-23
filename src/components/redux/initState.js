@@ -1,4 +1,8 @@
 export const initState = {
+  tables: [],
+};
+
+export const initTable = {
   espresso: 0,
   cappuccino: 0,
   tea: 0,
@@ -22,4 +26,11 @@ export const drinkPrices = {
   whiskey_price: 120,
   cola_price: 120,
   wather_price: 80,
+};
+
+export const numberOfTables = (numb) => {
+  for (let i = 0; i < numb; i++) {
+    initState.tables.push(initTable);
+  }
+  return initState;
 };

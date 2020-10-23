@@ -1,15 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { drinkPrices } from "./initState";
+import { drinkPrices } from "./redux/initState";
+import { useDispatch } from "react-redux";
+import { clean_table } from "./redux/actions";
 
-function Table({ table, index, clearTable }) {
-  const servedDrinks = () => {
-    const arr = [];
-    for (const prop in table) {
-      table[prop] > 0 && arr.push(`${prop} * ${table[prop]}`);
-    }
-    return arr;
-  };
+function Table({ table, index }) {
+  const dispatch = useDispatch();
 
   const sum = () => {
     const allList = [];
@@ -24,7 +20,7 @@ function Table({ table, index, clearTable }) {
   return (
     <div className="tab">
       <button
-        onClick={() => clearTable(index)}
+        onClick={() => dispatch(clean_table(index))}
         className="btn btn-danger btn-sm mt-2"
       >
         Clear table
@@ -32,9 +28,9 @@ function Table({ table, index, clearTable }) {
       <h3 className="mt-2">{`Table ${index + 1}`}</h3>
       <div className="holder">
         <ul>
-          {servedDrinks().map((el, i) => (
-            <li key={i}>{el}</li>
-          ))}
+          {Object.entries(table).map(
+            (el, i) => el[1] > 0 && <li key={i}>{`${el[0]} * ${el[1]}`}</li>
+          )}
         </ul>
       </div>
       <div className="sum">{sum()}</div>

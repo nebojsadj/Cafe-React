@@ -1,25 +1,22 @@
 import React, { useState } from "react";
 import { withRouter, Link } from "react-router-dom";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { to_serve } from "./redux/actions";
 
 function DrinkList(props) {
-  const [drinks, setDrinks] = useState(null);
+  const tables = useSelector((state) => state.tables.tables);
+  const dispatch = useDispatch();
+  const [drinks, setDrinks] = useState({ init: 0 });
+  const index = props.match.params.id;
+
   useEffect(() => {
-    setDrinks(props.tables[parseInt(props.match.params.id)]);
-  }, [props.match.params.id]);
+    setDrinks(tables[index]);
+  }, [index, tables]);
 
   const serve = () => {
-    const tableId = parseInt(props.match.params.id);
-    props.serveTable(tableId, drinks);
+    dispatch(to_serve(index, drinks));
     props.history.push("/");
-  };
-
-  const tableDrinks = () => {
-    const arr = [];
-    for (const key in drinks) {
-      arr.push({ key, value: parseInt(drinks[key]) });
-    }
-    return arr;
   };
 
   return (
@@ -38,14 +35,14 @@ function DrinkList(props) {
                   </tr>
                 </thead>
                 <tbody>
-                  {tableDrinks().map((el, i) => (
-                    <tr key={i}>
-                      <td>{`${el.key} ${el.value}`}</td>
+                  {Object.entries(drinks).map((el, index) => (
+                    <tr key={index}>
+                      <td>{`${el[0]} ${el[1]}`}</td>
                       <td>
                         <button
-                          disabled={el.value === 0}
+                          disabled={el[1] === 0}
                           onClick={() =>
-                            setDrinks({ ...drinks, [el.key]: [el.value - 1] })
+                            setDrinks({ ...drinks, [el[0]]: [el[1]] - 1 })
                           }
                           className="btn btn-info btn-sm"
                         >
@@ -55,7 +52,10 @@ function DrinkList(props) {
                       <td>
                         <button
                           onClick={() =>
-                            setDrinks({ ...drinks, [el.key]: [el.value + 1] })
+                            setDrinks({
+                              ...drinks,
+                              [el[0]]: parseInt([el[1]]) + 1,
+                            })
                           }
                           className="btn btn-info btn-sm"
                         >
