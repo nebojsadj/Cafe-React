@@ -7,7 +7,7 @@ import { to_serve } from "./redux/actions";
 function DrinkList(props) {
   const tables = useSelector((state) => state.tables.tables);
   const dispatch = useDispatch();
-  const [drinks, setDrinks] = useState({ init: 0 });
+  const [drinks, setDrinks] = useState({});
   const index = props.match.params.id;
 
   useEffect(() => {
@@ -35,35 +35,36 @@ function DrinkList(props) {
                   </tr>
                 </thead>
                 <tbody>
-                  {Object.entries(drinks).map((el, index) => (
-                    <tr key={index}>
-                      <td>{`${el[0]} ${el[1]}`}</td>
-                      <td>
-                        <button
-                          disabled={el[1] === 0}
-                          onClick={() =>
-                            setDrinks({ ...drinks, [el[0]]: [el[1]] - 1 })
-                          }
-                          className="btn btn-info btn-sm"
-                        >
-                          -
-                        </button>
-                      </td>
-                      <td>
-                        <button
-                          onClick={() =>
-                            setDrinks({
-                              ...drinks,
-                              [el[0]]: parseInt([el[1]]) + 1,
-                            })
-                          }
-                          className="btn btn-info btn-sm"
-                        >
-                          +
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
+                  {drinks &&
+                    Object.entries(drinks).map((el, index) => (
+                      <tr key={index}>
+                        <td>{`${el[0]} ${el[1]}`}</td>
+                        <td>
+                          <button
+                            disabled={el[1] === 0}
+                            onClick={() =>
+                              setDrinks({ ...drinks, [el[0]]: [el[1]] - 1 })
+                            }
+                            className="btn btn-info btn-sm"
+                          >
+                            -
+                          </button>
+                        </td>
+                        <td>
+                          <button
+                            onClick={() =>
+                              setDrinks({
+                                ...drinks,
+                                [el[0]]: parseInt([el[1]]) + 1,
+                              })
+                            }
+                            className="btn btn-info btn-sm"
+                          >
+                            +
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
               <button
