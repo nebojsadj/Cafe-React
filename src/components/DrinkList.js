@@ -14,11 +14,6 @@ function DrinkList(props) {
     setDrinks(tables[index]);
   }, [index, tables]);
 
-  const serve = () => {
-    dispatch(to_serve(index, drinks));
-    props.history.push("/");
-  };
-
   return (
     <div className="container mt-4">
       <div className="row">
@@ -67,12 +62,13 @@ function DrinkList(props) {
                     ))}
                 </tbody>
               </table>
-              <button
-                onClick={serve}
+              <Link
+                to="/"
+                onClick={() => dispatch(to_serve(index, drinks))}
                 className="btn btn-primary float-right mt-5 mr-5"
               >
                 Confirm
-              </button>
+              </Link>
               <br />
               <Link to="/" className="btn btn-warning float-left mt-4 ml-5">
                 Back
