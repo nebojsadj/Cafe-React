@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { drinkPrices } from "./redux/initState";
+import { drinkPrices } from "../redux/initState";
 import { useDispatch } from "react-redux";
-import { clean_table } from "./redux/actions";
+import { clean_table } from "../redux/actions";
 
 function Table({ table, index }) {
   const dispatch = useDispatch();

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { withRouter, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { to_serve } from "./redux/actions";
+import { to_serve } from "../redux/actions";
 
 function DrinkList(props) {
   const tables = useSelector((state) => state.tables.tables);
