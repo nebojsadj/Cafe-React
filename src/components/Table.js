@@ -6,7 +6,7 @@ import { clean_table } from "../redux/actions";
 
 function Table({ table, index }) {
   const dispatch = useDispatch();
-
+  
   const sum = () => {
     const allList = [];
     const names = Object.values(table);
@@ -18,9 +18,9 @@ function Table({ table, index }) {
   };
 
   return (
-    <div className="tab">
+    <div className="tab"  >
       <button
-        onClick={() => dispatch(clean_table(index))}
+         onClick={() => dispatch(clean_table(index))}
         className="btn btn-danger btn-sm mt-2"
       >
         Clear table

@@ -1,9 +1,15 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { useSelector } from "react-redux";
 import Table from "./Table";
 
 function Tables() {
+  const state = useSelector((state) => state.tables);
   const tables = useSelector((state) => state.tables.tables);
+
+  useEffect(() => {
+ 
+  }, [state])
+
   return (
     <div className="container-fluid">
       <div className="row">
