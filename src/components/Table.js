@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { drinkPrices } from "../redux/initState";
 import { useDispatch } from "react-redux";
 import { clean_table } from "../redux/actions";
-import { Col } from "react-bootstrap";
+import { Col, Button, ListGroup } from "react-bootstrap";
 
 function Table({ table, index }) {
   const dispatch = useDispatch();
@@ -24,12 +24,12 @@ function Table({ table, index }) {
       xs={{ span: 10, offset: 1 }}
       className="tab mx-auto mb-5"
     >
-      <button
+      <Button
         onClick={() => dispatch(clean_table(index))}
         className="btn btn-danger btn-sm mt-2"
       >
         Clear table
-      </button>
+      </Button>
       <h3 className="text-dark mt-2">{`Table ${index + 1}`}</h3>
       <div className="holder">
         <ul>

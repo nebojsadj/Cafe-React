@@ -1,10 +1,11 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 
 function Header() {
   return (
-    <div className="container-fluid text-center text-light">
+    <Container fluid className="text-center text-light">
       <h1>Cafe App</h1>
-    </div>
+    </Container>
   );
 }
 
