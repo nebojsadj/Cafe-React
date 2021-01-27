@@ -18,10 +18,10 @@ function DrinkList(props) {
     <div className="container mt-4">
       <div className="row">
         <div className="col-8 offset-2">
-          <h2 className="text-center">Drink list</h2>
+          <h2 className="text-center text-light">Drink list</h2>
           <div className="row mt-4">
             <div className="col-8 offset-2">
-              <table className="table">
+              <table className="table text-light bg-secondary">
                 <thead>
                   <tr>
                     <th>Drinks</th>
@@ -40,7 +40,7 @@ function DrinkList(props) {
                             onClick={() =>
                               setDrinks({ ...drinks, [el[0]]: [el[1]] - 1 })
                             }
-                            className="btn btn-info btn-sm"
+                            className="btn btn-light btn-sm"
                           >
                             -
                           </button>
@@ -53,7 +53,7 @@ function DrinkList(props) {
                                 [el[0]]: parseInt([el[1]]) + 1,
                               })
                             }
-                            className="btn btn-info btn-sm"
+                            className="btn btn-light btn-sm"
                           >
                             +
                           </button>

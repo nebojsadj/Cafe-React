@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import { drinkPrices } from "../redux/initState";
 import { useDispatch } from "react-redux";
 import { clean_table } from "../redux/actions";
+import { Col } from "react-bootstrap";
 
 function Table({ table, index }) {
   const dispatch = useDispatch();
-  
+
   const sum = () => {
     const allList = [];
     const names = Object.values(table);
@@ -18,14 +19,18 @@ function Table({ table, index }) {
   };
 
   return (
-    <div className="tab"  >
+    <Col
+      md={{ span: 12, offset: 0 }}
+      xs={{ span: 10, offset: 1 }}
+      className="tab mx-auto mb-5"
+    >
       <button
-         onClick={() => dispatch(clean_table(index))}
+        onClick={() => dispatch(clean_table(index))}
         className="btn btn-danger btn-sm mt-2"
       >
         Clear table
       </button>
-      <h3 className="mt-2">{`Table ${index + 1}`}</h3>
+      <h3 className="text-dark mt-2">{`Table ${index + 1}`}</h3>
       <div className="holder">
         <ul>
           {Object.entries(table).map(
@@ -33,11 +38,11 @@ function Table({ table, index }) {
           )}
         </ul>
       </div>
-      <div className="sum">{sum()}</div>
-      <Link to={"/drinks/" + index} className="btn btn-warning add">
+      <div className="sum bg-dark text-light">{sum()}</div>
+      <Link to={"/drinks/" + index} className="btn btn-danger add">
         Order a drink
       </Link>
-    </div>
+    </Col>
   );
 }
 

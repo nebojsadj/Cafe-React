@@ -12,7 +12,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    numberOfTables(6);
+    numberOfTables(8);
     dispatch(load_tables(initState.tables));
   }, [dispatch]);
 
