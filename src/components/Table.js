@@ -36,6 +36,7 @@ function Table({ table, index }) {
           {Object.entries(table).map(
             (el, i) => el[1] > 0 && <li key={i}>{`${el[0]} * ${el[1]}`}</li>
           )}
+          {!sum() > 0 && <p className="text-danger">Table is available</p>}
         </ul>
       </div>
       <div className="sum bg-dark text-light">{sum()}</div>
