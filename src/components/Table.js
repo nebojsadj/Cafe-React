@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { drinkPrices } from "../redux/initState";
 import { useDispatch } from "react-redux";
 import { clean_table } from "../redux/actions";
-import { Col, Button, ListGroup } from "react-bootstrap";
+import { Col, Button } from "react-bootstrap";
 
 function Table({ table, index }) {
   const dispatch = useDispatch();

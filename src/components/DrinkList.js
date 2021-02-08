@@ -17,10 +17,13 @@ function DrinkList(props) {
 
   return (
     <Container className="mt-4">
-      <h2 className="text-center text-light mb-5">Drink list</h2>
+      <h2 className="text-center text-light mb-2 h2Drink">Drink list</h2>
       <Row>
-        <Col md={{ span: 6, offset: 3 }} xs={{ span: 8, offset: 2 }}>
-          <Table striped bordered hover variant="dark">
+        <Col md={{ span: 6, offset: 3 }} xs={{ span: 10, offset: 1 }}>
+          <h5 className="text-center text-light">{`Table ${
+            parseInt(index) + 1
+          }`}</h5>
+          <Table striped bordered hover variant="dark" className="thtb">
             <thead>
               <tr>
                 <th>Drinks</th>
