@@ -10,7 +10,7 @@ function DrinkList(props) {
   const dispatch = useDispatch();
   const [drinks, setDrinks] = useState({});
   const index = props.match.params.id;
-
+  console.log("INDEX", index);
   useEffect(() => {
     setDrinks(tables[index]);
   }, [index, tables]);
