@@ -9,9 +9,9 @@ import store from "./redux/store";
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <HashRouter>
       <App />
-    </BrowserRouter>
+    </HashRouter>
   </Provider>,
   document.querySelector("#root")
 );
